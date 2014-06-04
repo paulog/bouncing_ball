@@ -1,0 +1,19 @@
+0 rem !to "build/bouncing_ball.prg"
+100 rem 1. place the ball in the starting position 
+110 s=1024
+115 b=81: rem "ball" code 
+116 x=0:y=0:ox=0:oy=0:rem starting coordinate
+117 dx=1:dy=1:rem how much i want to change y (delta y)
+118 mx=39:my=24: rem bottom of the screen 
+120 poke s+(40*oy)+ox,32:rem erase dot
+125 poke s+(40*y)+x,b:rem draw dot 
+200 rem 2. move the ball on the screen (initially to the right)
+205 ox=x:oy=y
+210 y=y+dy:x=x+dx
+300 rem 3, if ball hits the edge of the screen, change direction 
+301 if y=my then dy=-dy
+302 if y=0 then dy=-dy
+310 if x=mx then dx=-dx
+320 if x=0 then dx =-dx
+400 rem 4. repeat steps 2 and 3 endlessly 
+410 goto 120 
